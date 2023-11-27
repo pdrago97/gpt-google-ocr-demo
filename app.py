@@ -15,7 +15,7 @@ credentials_dict = {
     "type": st.secrets["google_cloud"]["GOOGLE_CREDENTIALS_TYPE"],
     "project_id": st.secrets["google_cloud"]["GOOGLE_PROJECT_ID"],
     "private_key_id": st.secrets["google_cloud"]["GOOGLE_PRIVATE_KEY_ID"],
-    "private_key": st.secrets["google_cloud"]["GOOGLE_PRIVATE_KEY"],
+    "private_key": st.secrets["google_cloud"]["GOOGLE_PRIVATE_KEY"].replace('\\n', '\n'),
     "client_email": st.secrets["google_cloud"]["GOOGLE_CLIENT_EMAIL"],
     "client_id": st.secrets["google_cloud"]["GOOGLE_CLIENT_ID"],
     "auth_uri": st.secrets["google_cloud"]["GOOGLE_AUTH_URI"],
