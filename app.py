@@ -9,22 +9,19 @@ import os
 
 load_dotenv()
 
-openai_client = openai.Client(api_key=os.getenv('OPENAI_API_KEY'))
-
-
-private_key_bytes = os.getenv('GOOGLE_PRIVATE_KEY').replace('\\n', '\n').encode()
+openai_client = openai.Client(api_key=st.secrets["openai"]["OPENAI_API_KEY"])
 
 credentials_dict = {
-    "type": os.getenv('GOOGLE_CREDENTIALS_TYPE'),
-    "project_id": os.getenv('GOOGLE_PROJECT_ID'),
-    "private_key_id": os.getenv('GOOGLE_PRIVATE_KEY_ID'),
-    "private_key": private_key_bytes,
-    "client_email": os.getenv('GOOGLE_CLIENT_EMAIL'),
-    "client_id": os.getenv('GOOGLE_CLIENT_ID'),
-    "auth_uri": os.getenv('GOOGLE_AUTH_URI'),
-    "token_uri": os.getenv('GOOGLE_TOKEN_URI'),
-    "auth_provider_x509_cert_url": os.getenv('GOOGLE_AUTH_PROVIDER_X509_CERT_URL'),
-    "client_x509_cert_url": os.getenv('GOOGLE_CLIENT_X509_CERT_URL')
+    "type": st.secrets["google_cloud"]["GOOGLE_CREDENTIALS_TYPE"],
+    "project_id": st.secrets["google_cloud"]["GOOGLE_PROJECT_ID"],
+    "private_key_id": st.secrets["google_cloud"]["GOOGLE_PRIVATE_KEY_ID"],
+    "private_key": st.secrets["google_cloud"]["GOOGLE_PRIVATE_KEY"],
+    "client_email": st.secrets["google_cloud"]["GOOGLE_CLIENT_EMAIL"],
+    "client_id": st.secrets["google_cloud"]["GOOGLE_CLIENT_ID"],
+    "auth_uri": st.secrets["google_cloud"]["GOOGLE_AUTH_URI"],
+    "token_uri": st.secrets["google_cloud"]["GOOGLE_TOKEN_URI"],
+    "auth_provider_x509_cert_url": st.secrets["google_cloud"]["GOOGLE_AUTH_PROVIDER_X509_CERT_URL"],
+    "client_x509_cert_url": st.secrets["google_cloud"]["GOOGLE_CLIENT_X509_CERT_URL"]
 }
 
 credentials = service_account.Credentials.from_service_account_info(credentials_dict)
