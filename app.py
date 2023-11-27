@@ -9,6 +9,9 @@ import os
 
 load_dotenv()
 
+
+print(st.secrets["openai"]["OPENAI_API_KEY"])
+
 openai_client = openai.Client(api_key=st.secrets["openai"]["OPENAI_API_KEY"])
 
 credentials_dict = {
