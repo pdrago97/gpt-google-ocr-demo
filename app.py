@@ -52,7 +52,7 @@ def detect_text(image_bytes):
     return texts[0].description if texts else 'No text detected'
 
 def main():
-    st.title("OCR with Google Cloud Vision and Streamlit + GPT-4.5 Turbo Integration")
+    st.title("OCR with Google Cloud Vision and Streamlit + gpt-3.5-turbo-1106 Integration")
 
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
     if uploaded_file is not None:
@@ -71,7 +71,7 @@ def main():
 
         gpt_time = time.time()  # Time after GPT response is done
 
-        st.write("GPT-4.5 Turbo Response:")
+        st.write("gpt-3.5-turbo-1106 Response:")
         st.write(gpt_response)
 
         # Calculate and print the time taken for OCR and GPT-3.5 Turbo response
