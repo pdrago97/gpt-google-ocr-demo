@@ -5,6 +5,7 @@ import io
 import openai
 from dotenv import load_dotenv
 import os
+import time
 
 
 load_dotenv()
@@ -55,15 +56,32 @@ def main():
 
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
     if uploaded_file is not None:
+        start_time = time.time()  # Start time measurement
+
         image_bytes = uploaded_file.getvalue()
         ocr_text = detect_text(image_bytes)
+
+        ocr_time = time.time()  # Time after OCR is done
+
         st.image(uploaded_file, caption='Uploaded Image.', use_column_width=True)
         st.write("Detected Text:")
         st.write(ocr_text)
 
         gpt_response = generate_response(ocr_text)
+
+        gpt_time = time.time()  # Time after GPT response is done
+
         st.write("GPT-4.5 Turbo Response:")
         st.write(gpt_response)
+
+        # Calculate and print the time taken for OCR and GPT-3.5 Turbo response
+        ocr_duration = ocr_time - start_time
+        gpt_duration = gpt_time - ocr_time
+        total_duration = gpt_time - start_time
+
+        st.write(f"OCR Time: {ocr_duration:.2f} seconds")
+        st.write(f"GPT-3.5 Turbo Response Time: {gpt_duration:.2f} seconds")
+        st.write(f"Total Operation Time: {total_duration:.2f} seconds")
 
 if __name__ == "__main__":
     main()
