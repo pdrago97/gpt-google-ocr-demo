@@ -52,7 +52,7 @@ def detect_text(image_bytes):
     return texts[0].description if texts else 'No text detected'
 
 def main():
-    st.title("OCR with Google Cloud Vision and Streamlit + gpt-3.5-turbo-1106 Integration")
+    st.title("Upload image for OCR and GPT-3.5 Turbo response")
 
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
     if uploaded_file is not None:
