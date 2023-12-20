@@ -38,7 +38,7 @@ def generate_response(prompt):
         model="gpt-3.5-turbo-1106",
         response_format={ "type": "json_object" },
         messages=[
-            {"role": "system", "content": "You are a helpful assistant designed to output a optimized JSON for medical documents, if the image is not related to medical documents, return a json with a negative response, like 'valid': not valid."},
+            {"role": "system", "content": "You are a helpful assistant designed to output a optimized JSON for medical documents, if the image is not related to medical documents, which can be receits, medical declarations, or anything related to medic, or 'ATESTADO MEDICO', stuff related , return a json with a negative response, like 'valid': not valid."},
             {"role": "user", "content": f"{prompt}"}
         ],
     )
@@ -52,7 +52,7 @@ def detect_text(image_bytes):
     return texts[0].description if texts else 'No text detected'
 
 def main():
-    st.title("Upload image for OCR and GPT-3.5 Turbo response")
+    st.title("Upload image for OCR and GPT-3.5 Turbo responses")
 
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
     if uploaded_file is not None:
