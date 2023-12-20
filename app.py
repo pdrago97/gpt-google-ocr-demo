@@ -38,7 +38,7 @@ def generate_response(prompt):
         model="gpt-3.5-turbo-1106",
         response_format={ "type": "json_object" },
         messages=[
-            {"role": "system", "content": "You are a helpful assistant designed to output a optimized JSON for medical documents. If the prompt does not contain information about patients, medical diagnosis, diseases, medical procedures or anything related to the medical field, please return an 'invalid' JSON."},
+            {"role": "system", "content": "You are a helpful assistant designed to output a optimized JSON for medical documents"},
             {"role": "user", "content": f"{prompt}"}
         ],
     )
