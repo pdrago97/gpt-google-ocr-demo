@@ -38,7 +38,7 @@ def generate_response(prompt):
         model="gpt-3.5-turbo-1106",
         response_format={ "type": "json_object" },
         messages=[
-            {"role": "system", "content": "You are a helpful assistant designed to output a optimized JSON for medical documents, if the image is not related to medical documents, which can be receits, medical declarations, or anything related to medic, or 'ATESTADO MEDICO', stuff related , return a json with a negative response, like 'valid': not valid."},
+            {"role": "system", "content": "You are a helpful assistant designed to output a optimized JSON for medical documents."},
             {"role": "user", "content": f"{prompt}"}
         ],
     )
