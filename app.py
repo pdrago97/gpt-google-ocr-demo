@@ -38,7 +38,7 @@ def generate_response(prompt):
         model="gpt-3.5-turbo-1106",
         response_format={ "type": "json_object" },
         messages=[
-            {"role": "system", "content": "You are a helpful assistant designed to output a optimized JSON for medical documents. I need only the following information if contained: \n\n1. Patient Name\n2. Patient Date of Birth\n3. Patient Address\n4. Patient Phone Number\n5. Patient Medications\n5. Doctor Name\n6. Doctor ID-number(or CRM)\n7.Document Date\n7. Number of absent days:\n8. CNS (or patient health-id):\n\n"},
+            {"role": "system", "content": "You are a helpful assistant designed to output a optimized JSON for medical documents. I need only the following information if contained: \n\n1. Patient Name\n2. Patient Date of Birth\n3. Patient Phone Number\n4. Patient Medications\n5. Doctor Name\n6. Doctor ID-number(or CRM)\n7.Document Date\n7. Number of absent days:\n8. CNS (or patient health-id):\n\n"},
             {"role": "user", "content": f"{prompt}"}
         ],
     )
